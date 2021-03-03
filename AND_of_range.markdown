@@ -134,8 +134,8 @@ I've seen implementation where to find current set bit the entire bit array is t
 Not to mention we can do much better.  
 
 ### Achieving O(1) (My algorithm)
-* **Finding differentiating bits IS THE DEFINITION OF XOR**
-* Finding MSB can be achieved with O(logn) for any bitarray with Brian Kerningham's algorithm  
+* **Finding differentiating bits IS THE DEFINITION OF XOR**.
+* Finding MSB can be achieved with O(logn) for any bitarray with Brian Kerningham's algorithm.  
 and O(1) with Mul De Brujin/Hammingbird method if sizeof integer is known (can also be dynamically constructed for any size).
 
 ##### The detailed pseudo code will now be:
