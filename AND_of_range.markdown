@@ -1,6 +1,36 @@
 # Find AND of numbers from the range [L, R] where L <= R    
 <details>
   <summary>tl;dr - My own algorithm (Click to Expand)</summary>  
+  
+  
+```c
+/*
+* O(1) with no conditionals/loops. pure arithmetics.
+* Could be written as one liner, broken down for clarity
+*/
+int and_range(int l, int r)
+{
+  int r_msb = msb(r);       /* find msb in r */
+  int xor_msb = msb(r ^ l); /* find msb in xor */
+  int sequence_mask = ((r_msb) - (xor_msb)) | (xor_msb); /* Mask of bits between xor msb and r msb */
+  
+  return (sequence_mask & !!(xor_msb ^ r_msb)) & r; /*Nullify mask if MSB is different in l and r*/
+}
+
+int msb(unsigned int v)
+{
+  static const int pos[32] = {0, 1, 28, 2, 29, 14, 24, 3,
+    30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19,
+    16, 7, 26, 12, 18, 6, 11, 5, 10, 9};
+  v |= v >> 1;
+  v |= v >> 2;
+  v |= v >> 4;
+  v |= v >> 8;
+  v |= v >> 16;
+  v = (v >> 1) + 1;
+  return pos[(v * 0x077CB531UL) >> 27];
+}
+```
 </details>  
 
 Given two integers L and R, the task is to find the AND of elements of the range [L, R].  
@@ -22,7 +52,7 @@ As the name suggests, this is essentialy coding the problem.
 2. AND every number within range into the key.  
 
 ##### Implementation in C
-```
+```c
 int and_range(int l, int r)
 {
   int key = l;
@@ -73,7 +103,7 @@ Knowing that we forever lose set bits when we introduce a new position, we can u
 3. Return the largest sequence of identical bits between L and R.
   
 Most online solutions look worse than this (the horrors):
-```
+```c
 int and_range(int l, int r)
 {
   int result_key = 0;
@@ -118,14 +148,14 @@ And there you have an algorithm that takes 4 operations, regardless of the input
 It has no loops, no if statments, and 0 read ahead needed. just an arithmetic sequence of operations.
 
 ##### C implementation of O(1) without conditions or loops
-```
+```c
 int and_range(int l, int r)
 {
   int r_msb = msb(r);       /* find msb in r */
   int xor_msb = msb(r ^ l); /* find msb in xor */
-  int sequence_mask = ((r_msb) - (xor_msb)) | (xor_msb) * xor /* Mask of bits between xor msb and r msb */
+  int sequence_mask = ((r_msb) - (xor_msb)) | (xor_msb); /* Mask of bits between xor msb and r msb */
   
-  return (sequence_mask * !!(xor_msb ^ r_msb)) & r; /*Nullify mask if MSB is different in l and r*/
+  return (sequence_mask & !!(xor_msb ^ r_msb)) & r; /*Nullify mask if MSB is different in l and r*/
 }
 
 /* Mul De Brujin O(1) arithmetic find MSB */
