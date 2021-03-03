@@ -1,7 +1,8 @@
 # Find AND of numbers from the range [L, R] where L <= R    
 <details>
   <summary>tl;dr - My own algorithm (Click to Expand)</summary>
-</details>
+</details>  
+
 Given two integers L and R, the task is to find the AND of elements of the range [L, R].  
 E.g.  
 ```
