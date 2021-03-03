@@ -1,6 +1,6 @@
 # Find AND of numbers from the range [L, R] where L <= R    
 <details>
-  <summary>tl;dr - My own algorithm (Click to Expand)</summary>
+  <summary>tl;dr - My own algorithm (Click to Expand)</summary>  
 </details>  
 
 Given two integers L and R, the task is to find the AND of elements of the range [L, R].  
@@ -123,9 +123,9 @@ int and_range(int l, int r)
 {
   int r_msb = msb(r);       /* find msb in r */
   int xor_msb = msb(r ^ l); /* find msb in xor */
-  int sequence_mask = ((r_msb) - (xor_l_r)) | (xor_msb) /* Mask of bits between xor msb and r msb */
+  int sequence_mask = ((r_msb) - (xor_msb)) | (xor_msb) * xor /* Mask of bits between xor msb and r msb */
   
-  return sequence_mask & r;
+  return (sequence_mask * !!(xor_msb ^ r_msb)) & r; /*Nullify mask if MSB is different in l and r*/
 }
 
 /* Mul De Brujin O(1) arithmetic find MSB */
