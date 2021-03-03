@@ -109,12 +109,39 @@ Not to mention we can do much better.
 and O(1) with Mul De Brujin/Hammingbird method if sizeof integer is known (can also be dynamically constructed for any size).
 
 ##### The detailed pseudo code will now be:
-1. Find MSB of R with a single operation (single operation).
-2. XOR L and R (single operation).
+1. Find MSB of R   (single operation).
+2. XOR L and R     (single operation).
 3. Find MSB in XOR (single operation).
 4. return the bits in R/L that are between R MSB and XOR MSB (single operation).  
 
 And there you have an algorithm that takes 4 operations, regardless of the input.  
-It has no If statments, No read ahead needed. just an arithmetic sequence of operations.
+It has no loops, no if statments, and 0 read ahead needed. just an arithmetic sequence of operations.
 
 ##### C implementation of O(1) without conditions or loops
+```
+int and_range(int l, int r)
+{
+  int r_msb = msb(r);       /* find msb in r */
+  int xor_msb = msb(r ^ l); /* find msb in xor */
+  int sequence_mask = ((r_msb) - (xor_l_r)) | (xor_msb) /* Mask of bits between xor msb and r msb */
+  
+  return sequence_mask & r;
+}
+
+/* Mul De Brujin O(1) arithmetic find MSB */
+/* This version is 32 bit, can be dynamically made for any sizeof(int) in O(1) */
+/* Could also use Brian Kerningham's algorithm */
+int msb(unsigned int v)
+{
+  static const int pos[32] = {0, 1, 28, 2, 29, 14, 24, 3,
+    30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19,
+    16, 7, 26, 12, 18, 6, 11, 5, 10, 9};
+  v |= v >> 1;
+  v |= v >> 2;
+  v |= v >> 4;
+  v |= v >> 8;
+  v |= v >> 16;
+  v = (v >> 1) + 1;
+  return pos[(v * 0x077CB531UL) >> 27];
+}
+```
