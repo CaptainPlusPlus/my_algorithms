@@ -128,8 +128,8 @@ int and_range(int l, int r)
 Yes, this achieves the notion of arguebly O(1).
 Why arguebly?
 * To find the highest set bit, as well as to determine sequence, we loop through the bits.     
-most implementations find current set bit traverse the entire bit array to find set bit,  
-Some don't even break the iteration when sequence is over.
+most implementations find current set bit by traversing the entire bit array, whilst  
+some don't even break the iteration when sequence is over.
 * It could also be claimed that the size of integer in memory can not be predetermined, therefore the solution is O(sizeof(int)),  
 Not to mention we can do much better.
 
