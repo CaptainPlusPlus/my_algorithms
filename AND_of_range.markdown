@@ -85,7 +85,7 @@ Output: 0
 In binary - 00000
 ```
 Onto anything?  
-If you look just at the binary representations, you'll notice  
+##### If you look just at the binary representations, you'll notice:
 * The result is the sequence of the highest matching bits.  
 * When the sequence is over, everything to the right is 0'ed out.
 
