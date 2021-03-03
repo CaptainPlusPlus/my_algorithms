@@ -1,6 +1,6 @@
 # Find AND of numbers from the range [L, R] where L <= R    
 <details>
-  <summary>tl;dr - My own algorithm (Click to Expand)</summary>  
+  <summary>tl;dr - final algorithm (Click to Expand)</summary>  
   
   
 ```c
