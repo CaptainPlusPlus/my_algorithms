@@ -11,7 +11,7 @@ int and_range(int l, int r)
   int xor_msb = msb(r ^ l); /* find msb in xor */
   int sequence_mask = ((r_msb) - (xor_msb)) | (xor_msb); /* Mask of bits between xor msb and r msb */
   
-  return (sequence_mask & !!(xor_msb ^ r_msb)) & r; /*Nullify mask if MSB is different in l and r*/
+  return (sequence_mask & (xor_msb ^ r_msb)) & r; /*Nullify mask if MSB is different in l and r*/
 }
 
 int msb(unsigned int v)
