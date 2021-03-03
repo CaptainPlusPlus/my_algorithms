@@ -133,7 +133,7 @@ I've seen implementation where to find current set bit the entire bit array is t
 * It can therefore be claimed that the size of integer in memory can not be predetermined, therefore the solution is O(sizeof(int)),  
 Not to mention we can do much better.  
 
-### Achieving O(1) (My algorithm)
+### Achieving true O(1) and taking performance to the final form.
 * **Finding differentiating bits IS THE DEFINITION OF XOR**.
 * Finding MSB can be achieved with O(logn) for any bitarray with Brian Kerningham's algorithm.  
 and O(1) with Mul De Brujin/Hammingbird method if sizeof integer is known (can also be dynamically constructed for any size).
