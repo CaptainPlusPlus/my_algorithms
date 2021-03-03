@@ -1,6 +1,6 @@
 /***********************************************************************************/
 /***************** AND operation between integers in input range *******************/
-/************* No conditions, no read aheads, no loops. pure arithmetics ***********/
+/*********** No conditions, no read aheads, no loops. pure arithmetics, O(1) *******/
 /**************** For further analysis read AND_of_range.markdown ******************/
 /***********************************************************************************/
 
