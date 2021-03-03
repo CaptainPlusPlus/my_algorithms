@@ -67,14 +67,54 @@ Since & is a restrictive operation, once one of the binary positions in such a s
 This position will make the result of every bit &ing with it a 0.  
 Knowing that we forever lose set bits when we introduce a new position, we can understand this behavior.
 
-##### The new acceptable algorithm now that we are smarter:
+##### The new acceptable middleground algorithm now that we are smarter:
 1. Find highest MSB in L and R.
 2. If it is not the same bit, return 0.
 3. Return the largest sequence of identical bits between L and R.
   
-Most online solutions look a little worse than this (the horror):
+Most online solutions look worse than this (the horrors):
 ```
 int and_range(int l, int r)
 {
-  int key = 0;
+  int result_key = 0;
+  int curr_set_bit = 1 << (sizeof(int) * 8 - 1); /* Create highest int bit in system */
   
+  /* Traversing from MSB to LSB */
+  while (curr_set_bit)
+  {
+    /* msb found in target */
+    if (curr_set_bit & r)
+    {
+      if (r & l) result_key |= curr_set_bit; /* Sequence exists in initial integer */
+      else return result_key;                /* End of sequence */
+    }
+    curr_set_bit =>> 1;
+  }
+  return result_key;
+}  
+```
+
+##### So what do we have here?  
+Yes, this achieves the notion of arguebly O(1).
+Why arguebly?
+* To find the highest set bit, as well as to determine sequence, we loop through the bits.   
+I've seen implementation where to find current set bit the entire bit array is traversed with every iteration.  
+* Some don't even break the iteration when sequence is over.
+* It can therefore be claimed that the size of integer in memory can not be predetermined, therefore the solution is O(sizeof(int)),  
+Not to mention we can do much better.  
+
+### Achieving O(1) (My algorithm)
+* **Finding differentiating bits IS THE DEFINITION OF XOR**
+* Finding MSB can be achieved with O(logn) for any bitarray with Brian Kerningham's algorithm  
+and O(1) with Mul De Brujin/Hammingbird method if sizeof integer is known (can also be dynamically constructed for any size).
+
+##### The detailed pseudo code will now be:
+1. Find MSB of R with a single operation (single operation).
+2. XOR L and R (single operation).
+3. Find MSB in XOR (single operation).
+4. return the bits in R/L that are between R MSB and XOR MSB (single operation).  
+
+And there you have an algorithm that takes 4 operations, regardless of the input.  
+It has no If statments, No read ahead needed. just an arithmetic sequence of operations.
+
+##### C implementation of O(1) without conditions or loops
