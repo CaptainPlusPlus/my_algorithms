@@ -38,7 +38,7 @@ E.g.
 ```
 L = 5,  
 R = 9,  
-Expected output = 5 & 6 & 7 & 8 & 9
+Expected output = 5 & 6 & 7 & 8 & 9 = 0
 ```
 
 
