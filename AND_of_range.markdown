@@ -135,7 +135,7 @@ Not to mention we can do much better.
 
 ### Achieving true O(1) and taking performance to the final form.
 * **Finding differentiating bits IS THE DEFINITION OF XOR**.
-* Finding MSB can be achieved with O(logn) for any bitarray with Brian Kerningham's algorithm.  
+* Finding MSB can be achieved with O(logn) for any bitarray with Brian Kerningham's algorithm,  
 and O(1) with Mul De Brujin/Hammingbird method if sizeof integer is known (can also be dynamically constructed for any size).
 
 ##### The detailed pseudo code will now be:
