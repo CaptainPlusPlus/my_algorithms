@@ -2,6 +2,6 @@
 
 Given two integers L and R, the task is to find the XOR of elements of the range [L, R].  
 E.g.    
-`<L = 5,  
+`L = 5,  
 R = 9  
-Expected output = 5 ^ 6 ^ 7 ^ 8 ^ 9>`  
+Expected output = 5 ^ 6 ^ 7 ^ 8 ^ 9`  
