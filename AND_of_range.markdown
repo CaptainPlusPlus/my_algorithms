@@ -125,8 +125,8 @@ int and_range(int l, int r)
 ```
 
 ##### So what do we have here?  
-Yes, this achieves the notion of arguebly O(1).
-Why arguebly?
+Yes, this achieves the notion of possibly O(1), and in some cases - we are still at O(n) :(  
+Why possibly?
 * To find the highest set bit, as well as to determine sequence, we loop through the bits.     
 most implementations find current set bit by traversing the entire bit array, whilst  
 some don't even break the iteration when sequence is over.
