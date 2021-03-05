@@ -17,7 +17,7 @@ int and_range(int l, int r)
   return (sequence_mask & (xor_msb ^ r_msb)) & r; /*Nullify mask if MSB is different in l and r*/
 }
 
-int msb(register unsigned int x)
+int msb(int x)
 {
         x |= (x >> 1);
         x |= (x >> 2);
@@ -156,7 +156,7 @@ int and_range(int l, int r)
 
 /* SWAR O(1) arithmetic find MSB */
 /* This version is 32 bit, can be dynamically made for any sizeof(int) in O(1) */
-int msb(register unsigned int x)
+int msb(int x)
 {
         x |= (x >> 1);
         x |= (x >> 2);
