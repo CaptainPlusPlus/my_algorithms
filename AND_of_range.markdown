@@ -65,9 +65,9 @@ int and_range(int l, int r)
 }
 ```
 ### What they want you to say at an interview - Time complexity arguebly O(1)
-To nobody's surprise, being the only element in the problem,  
-The more efficient solution has to do with the properties of and.  
-Well let's look at some inputs and outputs and try observing a pattern.
+* To nobody's surprise, being the only element in the problem,
+* The more efficient solution has to do with the properties of AND.  
+Well then, let's look at some inputs and outputs, and try figuring a pattern:
 ```
 Input: l = 9, r = 15  
 In binary - l = 01001, r = 01111 
