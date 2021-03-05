@@ -17,18 +17,14 @@ int and_range(int l, int r)
   return (sequence_mask & (xor_msb ^ r_msb)) & r; /*Nullify mask if MSB is different in l and r*/
 }
 
-int msb(unsigned int v)
+int msb(register unsigned int x)
 {
-  static const int pos[32] = {0, 1, 28, 2, 29, 14, 24, 3,
-    30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19,
-    16, 7, 26, 12, 18, 6, 11, 5, 10, 9};
-  v |= v >> 1;
-  v |= v >> 2;
-  v |= v >> 4;
-  v |= v >> 8;
-  v |= v >> 16;
-  v = (v >> 1) + 1;
-  return pos[(v * 0x077CB531UL) >> 27];
+        x |= (x >> 1);
+        x |= (x >> 2);
+        x |= (x >> 4);
+        x |= (x >> 8);
+        x |= (x >> 16);
+        return(x & ~(x >> 1));
 }
 ```
 </details>  
@@ -136,7 +132,7 @@ Not to mention we can do much better.
 ### Achieving true O(1) and taking performance to the final form.
 * **Finding differentiating bits IS THE DEFINITION OF XOR**.
 * Finding MSB can be achieved with O(logn) for any bitarray with Brian Kerningham's algorithm,  
-and O(1) with Mul De Brujin/Hammingbird method if sizeof integer is known (can also be dynamically constructed for any size).
+and O(1) with Mul De Brujin/Hammingbird/SWAR method if sizeof integer is known (can also be dynamically constructed for any size).
 
 ##### The detailed pseudo code will now be:
 1. Find MSB of R.
@@ -158,19 +154,15 @@ int and_range(int l, int r)
   return (sequence_mask & (xor_msb ^ r_msb)) & r; /*Nullify mask if MSB is different in l and r*/
 }
 
-/* Mul De Brujin O(1) arithmetic find MSB */
+/* SWAR O(1) arithmetic find MSB */
 /* This version is 32 bit, can be dynamically made for any sizeof(int) in O(1) */
-int msb(unsigned int v)
+int msb(register unsigned int x)
 {
-  static const int pos[32] = {0, 1, 28, 2, 29, 14, 24, 3,
-    30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19,
-    16, 7, 26, 12, 18, 6, 11, 5, 10, 9};
-  v |= v >> 1;
-  v |= v >> 2;
-  v |= v >> 4;
-  v |= v >> 8;
-  v |= v >> 16;
-  v = (v >> 1) + 1;
-  return pos[(v * 0x077CB531UL) >> 27];
+        x |= (x >> 1);
+        x |= (x >> 2);
+        x |= (x >> 4);
+        x |= (x >> 8);
+        x |= (x >> 16);
+        return(x & ~(x >> 1));
 }
 ```
