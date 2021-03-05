@@ -89,7 +89,7 @@ Onto anything?
 * The result is the sequence of the highest matching bits.  
 * When the sequence is over, everything to the right is 0'ed out.
 
-I'm still not your mom but I still suggest you try and understand why.
+I'm still not your mom but please try and understand why on your own.
 ##### What is behind this sorcery?!
 This has to do with the process occuring when enumerating binary numbers.
 To go from 01001 to 11100, we have to go through 01111 and 10000 along the way.  
