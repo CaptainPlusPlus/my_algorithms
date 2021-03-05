@@ -131,8 +131,8 @@ Not to mention we can do much better.
 
 ### Achieving true O(1) and taking performance to the final form.
 * **Finding differentiating bits IS THE DEFINITION OF XOR**.
-* Finding MSB can be achieved with O(logn) for any bitarray with Brian Kerningham's algorithm,  
-and O(1) with Mul De Brujin/Hammingbird/SWAR method if sizeof integer is known (can also be dynamically constructed for any size).
+* Finding MSB can be achieved with O(log(n bits of int)) for any bitarray with SWAR algorithm,  
+and O(1) with Mul De Brujin/Hammingbird/GCC builtin_clz.
 
 ##### The detailed pseudo code will now be:
 1. Find MSB of R.
