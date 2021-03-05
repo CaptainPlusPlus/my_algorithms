@@ -139,13 +139,13 @@ Not to mention we can do much better.
 and O(1) with Mul De Brujin/Hammingbird method if sizeof integer is known (can also be dynamically constructed for any size).
 
 ##### The detailed pseudo code will now be:
-1. Find MSB of R   (single operation).
-2. XOR L and R     (single operation).
-3. Find MSB in XOR (single operation).
-4. return the bits in R/L that are between R MSB and XOR MSB (single operation).  
+1. Find MSB of R.
+2. XOR L and R.
+3. Find MSB in XOR.
+4. return the bits in R/L that are between R MSB and XOR MSB.  
 
-And there you have an algorithm that takes 4 operations, regardless of the input.  
-It has no loops, no if statments, and 0 read ahead needed. just an arithmetic sequence of operations.
+And there you have an algorithm that takes 4 operations (1-4 are all finite atomically executable operations), regardless of the input.  
+This approach has no loops, no if statments, and 0 read ahead needed. just an arithmetic sequence of operations.
 
 ##### C implementation of O(1) without conditions or loops
 ```c
