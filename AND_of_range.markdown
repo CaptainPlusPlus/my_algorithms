@@ -118,7 +118,7 @@ int and_range(int l, int r)
       if (r & l) result_key |= curr_set_bit; /* Sequence exists in initial integer */
       else return result_key;                /* End of sequence */
     }
-    curr_set_bit =>> 1;
+    curr_set_bit >>= 1;
   }
   return result_key;
 }  
