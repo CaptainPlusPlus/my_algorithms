@@ -1,4 +1,4 @@
-# Find AND of numbers from the range [L, R] where L <= R    
+# Find bitwise AND of numbers from the range [L, R] where L <= R    
 <details>
   <summary>tl;dr - final algorithm (Click to Expand)</summary>  
   
