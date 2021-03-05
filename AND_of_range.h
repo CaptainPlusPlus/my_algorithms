@@ -14,7 +14,7 @@ int and_range(int l, int r)
   return (sequence_mask & (xor_msb ^ r_msb)) & r; /*Nullify mask if MSB is different in l and r*/
 }
 
-int msb(register unsigned int x)
+int msb(int x)
 {
         x |= (x >> 1);
         x |= (x >> 2);
