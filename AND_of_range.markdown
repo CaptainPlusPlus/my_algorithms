@@ -160,7 +160,6 @@ int and_range(int l, int r)
 
 /* Mul De Brujin O(1) arithmetic find MSB */
 /* This version is 32 bit, can be dynamically made for any sizeof(int) in O(1) */
-/* Could also use Brian Kerningham's algorithm */
 int msb(unsigned int v)
 {
   static const int pos[32] = {0, 1, 28, 2, 29, 14, 24, 3,
