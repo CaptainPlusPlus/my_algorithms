@@ -1,7 +1,7 @@
 /***********************************************************************************/
 /***************** AND operation between integers in input range *******************/
 /*********** No conditions, no read aheads, no loops. pure arithmetics, O(1) *******/
-/**************** For further analysis read AND_of_range.markdown ******************/
+/**************** For further analysis read AND_of_range.md ******************/
 /***********************************************************************************/
 
 /* Could be written as a one liner, broken down for clarity */
@@ -14,6 +14,7 @@ int and_range(int l, int r)
   return (sequence_mask & (xor_msb ^ r_msb)) & r; /*Nullify mask if MSB is different in l and r*/
 }
 
+/* 32 bit */
 int msb(int x)
 {
         x |= (x >> 1);
