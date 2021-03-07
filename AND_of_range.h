@@ -1,7 +1,7 @@
 /***********************************************************************************/
 /***************** AND operation between integers in input range *******************/
 /*********** No conditions, no read aheads, no loops. pure arithmetics, O(1) *******/
-/**************** For further analysis read AND_of_range.md ******************/
+/**************** For further analysis read AND_of_range.md ************************/
 /***********************************************************************************/
 
 /* Could be written as a one liner, broken down for clarity */
