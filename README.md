@@ -1,2 +1,2 @@
-### Showing off some of my most terrifying works.
-For better or worse, everything written here is my own (wrong)doing.
+### Some of my most terrifying works.
+Some nifty algorithms to argue about 
